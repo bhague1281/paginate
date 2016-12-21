@@ -139,17 +139,17 @@ module Octopress
       else
         page.site.collections[page['paginate']['collection']].docs
       end
-      
+
       if page['paginate']['reversed'] == true
         collection = collection.reverse
       end
 
       if categories = page.data['paginate']['categories']
-        collection = collection.reject{|p| (p.categories & categories).empty?}
+        collection = collection.reject{|p| (p.data['categories'] & categories).empty?}
       end
 
       if tags = page.data['paginate']['tags']
-        collection = collection.reject{|p| (p.tags & tags).empty?}
+        collection = collection.reject{|p| (p.data['tags'] & tags).empty?}
       end
 
       collection
